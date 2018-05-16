@@ -1,8 +1,6 @@
 package selenium.page.login;
 
-import static selenium.tests.utils.Constants.DASHBOARD;
-import static selenium.tests.utils.Constants.PWD;
-import static selenium.tests.utils.Constants.USR;
+import static selenium.tests.utils.Constants.*;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -19,12 +17,13 @@ public class LoginView extends AbstractView {
 
 	private boolean loggedIn;
 
-	private By usernameLocator = By.id("loginForm:username");
-	private By passwordLocator = By.id("loginForm:password");
-	private By loginButtonLocator = By.id("loginForm:loginButton");
+	private By usernameLocator = By.id("form:username");
+	private By passwordLocator = By.id("form:password");
+	private By loginButtonLocator = By.id("form:loginButton");
 
 	public LoginView(WebDriver webDriver) {
 		super(webDriver);
+		webDriver.manage().window().maximize();
 		navigateToLogin();
 		username = webDriver.findElement(usernameLocator);
 		password = webDriver.findElement(passwordLocator);
@@ -32,15 +31,13 @@ public class LoginView extends AbstractView {
 
 	}
 
-	public void login() throws InterruptedException {
+	public void login(String usr, String pass) throws InterruptedException {
 
-		username.sendKeys(USR);
-		password.sendKeys(PWD);
-
+		username.sendKeys(usr);
+		password.sendKeys(pass);
 		loginButton.click();
 		Thread.sleep(2000);
 		loggedIn = webDriver.getCurrentUrl().contains(DASHBOARD);
-
 	}
 
 	private void navigateToLogin() {
@@ -55,5 +52,4 @@ public class LoginView extends AbstractView {
 	public void setLoggedIn(boolean loggedIn) {
 		this.loggedIn = loggedIn;
 	}
-
 }

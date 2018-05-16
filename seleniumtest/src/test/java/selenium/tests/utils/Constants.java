@@ -3,6 +3,7 @@ package selenium.tests.utils;
 public class Constants {
 	
 	public static String USR 			= "admin";
+	public static String INVALID_USR	= "adm";
 	public static String PWD 			= "Admin123+";
 	public static String LOGIN_URL 		= "http://localhost:8081/alpet-fe/login.xhtml";
 	public static String DASHBOARD		= "dashboard.xhtml";
