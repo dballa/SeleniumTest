@@ -5,6 +5,7 @@ import static selenium.tests.utils.Constants.PWD;
 import static selenium.tests.utils.Constants.USR;
 
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
@@ -18,10 +19,10 @@ public class LoginTest {
 
 	public static WebDriver driver ;
 	
-	public LoginView loginView;
+	public static LoginView loginView;
 	
-	@Before
-	public  void  init() {
+	@BeforeClass
+	public static void  init() {
 		driver = DriverUtil.getChromeDriver();
 		loginView= new LoginView(driver);
 		
