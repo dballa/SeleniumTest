@@ -14,6 +14,6 @@ public class Constants {
 	public static String EMAIL 			= "johndoo@gmail.com";
 	public static String PASSWORD		= "Admin123+";
 	
-	public static String TEST			= "TEST";
+	public static String TEST			= "test";
 	public static String INVALID_EMAIL	= "Email nuk është i saktë!";
 }
