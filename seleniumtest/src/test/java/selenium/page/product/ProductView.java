@@ -50,17 +50,17 @@ public class ProductView extends AbstractView {
 		openAddProductDialog.click();
 		Thread.sleep(500);
 		productName = webDriver.findElement(productNameLocator);
-		String nameToSend = PRODUCT_NAME + i;
-		productName.sendKeys(nameToSend);
+//		String nameToSend = PRODUCT_NAME + i;
+	//	productName.sendKeys(nameToSend);
 		productDescription = webDriver.findElement(productDescriptionLocator);
-		productDescription.sendKeys(PRODUCT_DESCRIPTION);
+	//	productDescription.sendKeys(PRODUCT_DESCRIPTION);
 		addProductButton = webDriver.findElement(addProductButtonLocator);
 		addProductButton.click();
 		Thread.sleep(2000);
 		dataTable = webDriver.findElement(dataTableLocator);
 		addedRowOnTable = dataTable.findElement(addedRowOnTableLocator);
 		String nameOfProductAdded = addedRowOnTable.getText();
-		addedCorrectProduct = nameToSend.equals(nameOfProductAdded);
+		//addedCorrectProduct = nameToSend.equals(nameOfProductAdded);
 	}
 
 	public void editProduct() throws InterruptedException {
@@ -69,13 +69,13 @@ public class ProductView extends AbstractView {
 		Actions actions = new Actions(webDriver);
 		actions.moveToElement(cellToEdit);
 		actions.click();
-		String textToAdd = PRODUCT_NAME + i;
-		actions.sendKeys(textToAdd);
+	//	String textToAdd = PRODUCT_NAME + i;
+	//	actions.sendKeys(textToAdd);
 		actions.build().perform();
 		webDriver.findElement(By.id("contentForm")).click();
 		Thread.sleep(500);
 		cellAfterEdit = webDriver.findElement(cellAfterEditLocator);
-		editCorrectProduct = cellAfterEdit.getText().equals(textToAdd);
+	//	editCorrectProduct = cellAfterEdit.getText().equals(textToAdd);
 	}
 
 	public void disableProduct() throws InterruptedException {

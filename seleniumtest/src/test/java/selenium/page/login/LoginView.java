@@ -21,12 +21,14 @@ public class LoginView extends AbstractView {
 	private By passwordLocator = By.id("form:password");
 	private By loginButtonLocator = By.id("form:loginButton");
 
-	public LoginView(WebDriver webDriver) {
+	public LoginView(WebDriver webDriver) throws InterruptedException {
 		super(webDriver);
-		webDriver.manage().window().maximize();
+		//webDriver.manage().window().maximize();
 		navigateToLogin();
-		username = webDriver.findElement(usernameLocator);
+		
 		password = webDriver.findElement(passwordLocator);
+		username = webDriver.findElement(usernameLocator);
+		
 		loginButton = webDriver.findElement(loginButtonLocator);
 
 	}

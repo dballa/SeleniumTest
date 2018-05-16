@@ -32,7 +32,7 @@ public class ProductTest {
 	public void addProductTest() throws InterruptedException {
 		loginView.login(USR, PWD);
 		Thread.sleep(2000);
-		dashboardView.redirectToManageProduct();
+	//	dashboardView.redirectToManageProduct();
 		productView.addProduct();
 		assertTrue(productView.isAddedCorrectProduct());
 	}

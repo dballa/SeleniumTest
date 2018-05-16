@@ -22,7 +22,7 @@ public class LoginTest {
 	public static LoginView loginView;
 	
 	@BeforeClass
-	public static void  init() {
+	public static void  init() throws InterruptedException {
 		driver = DriverUtil.getChromeDriver();
 		loginView= new LoginView(driver);
 		
