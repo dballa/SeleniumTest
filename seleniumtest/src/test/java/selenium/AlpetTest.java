@@ -1,17 +1,15 @@
-package seleniumtest;
+package selenium;
 
 import static org.junit.Assert.assertTrue;
-
-import static seleniumtest.Util.TEST;
-import static seleniumtest.Util.NAME;
-import static seleniumtest.Util.SURNAME;
-import static seleniumtest.Util.WRONG_EMAIL;
-import static seleniumtest.Util.EMAIL;
+import static selenium.tests.utils.Constants.EMAIL;
+import static selenium.tests.utils.Constants.INVALID_EMAIL;
+import static selenium.tests.utils.Constants.NAME;
+import static selenium.tests.utils.Constants.PASSWORD;
+import static selenium.tests.utils.Constants.SURNAME;
+import static selenium.tests.utils.Constants.TEST;
+import static selenium.tests.utils.Constants.WRONG_EMAIL;
 
 import java.util.List;
-
-import static seleniumtest.Util.PASSWORD;
-import static seleniumtest.Util.INVALID_EMAIL;
 
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -19,6 +17,8 @@ import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import selenium.utils.DriverUtil;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AlpetTest {

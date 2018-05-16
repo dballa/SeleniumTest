@@ -1,4 +1,4 @@
-package seleniumtest;
+package selenium.tests.login;
 
 import static org.junit.Assert.assertTrue;
 
@@ -9,7 +9,8 @@ import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import seleniumtest.page.login.LoginView;
+import selenium.page.login.LoginView;
+import selenium.utils.DriverUtil;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class LoginTest {

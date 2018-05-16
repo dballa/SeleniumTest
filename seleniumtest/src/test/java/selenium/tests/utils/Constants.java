@@ -1,6 +1,6 @@
-package seleniumtest;
+package selenium.tests.utils;
 
-public class Util {
+public class Constants {
 	
 	public static String USR 			= "admin";
 	public static String PWD 			= "Admin123+";

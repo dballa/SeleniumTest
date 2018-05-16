@@ -1,4 +1,4 @@
-package seleniumtest;
+package selenium;
 
 import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;

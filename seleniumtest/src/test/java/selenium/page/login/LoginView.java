@@ -1,15 +1,15 @@
-package seleniumtest.page.login;
+package selenium.page.login;
 
-import static seleniumtest.Util.DASHBOARD;
-import static seleniumtest.Util.USR;
-import static seleniumtest.Util.PWD;
+import static selenium.tests.utils.Constants.DASHBOARD;
+import static selenium.tests.utils.Constants.PWD;
+import static selenium.tests.utils.Constants.USR;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import seleniumtest.AbstractView;
-import seleniumtest.Util;
+import selenium.page.AbstractView;
+import selenium.tests.utils.Constants;
 
 public class LoginView extends AbstractView {
 
@@ -45,7 +45,7 @@ public class LoginView extends AbstractView {
 
 	private void navigateToLogin() {
 		
-		webDriver.navigate().to(Util.LOGIN_URL);
+		webDriver.navigate().to(Constants.LOGIN_URL);
 	}
 	
 	public boolean isLoggedIn() {

@@ -1,4 +1,4 @@
-package seleniumtest;
+package selenium.page;
 
 import org.openqa.selenium.WebDriver;
 
