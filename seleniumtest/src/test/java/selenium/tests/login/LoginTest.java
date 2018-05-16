@@ -1,8 +1,8 @@
 package selenium.tests.login;
 
 import static org.junit.Assert.assertTrue;
-
-import static selenium.tests.utils.Constants.*;
+import static selenium.tests.utils.Constants.PWD;
+import static selenium.tests.utils.Constants.USR;
 
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -21,15 +21,15 @@ public class LoginTest {
 	public LoginView loginView;
 	
 	@Before
-	public void init() {
+	public  void  init() {
 		driver = DriverUtil.getChromeDriver();
-		loginView = new LoginView(driver);
+		loginView= new LoginView(driver);
 		
 	}
 	
 	
 	@Test
-	public void test_1() throws InterruptedException {
+	public void loginTest() throws InterruptedException {
 		
 		loginView.login(USR, PWD);
 		assertTrue(loginView.isLoggedIn());
