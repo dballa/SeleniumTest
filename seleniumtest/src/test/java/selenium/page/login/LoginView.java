@@ -1,35 +1,35 @@
 package selenium.page.login;
 
-import static selenium.tests.utils.Constants.*;
+import static selenium.tests.utils.Constants.DASHBOARD;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
-import selenium.page.AbstractView;
+import selenium.page.BaseView;
 import selenium.tests.utils.Constants;
 
-public class LoginView extends AbstractView {
+public class LoginView extends BaseView {
 
+	@FindBy(id = "form:username")
 	private WebElement username;
+
+	@FindBy(id = "form:password")
 	private WebElement password;
+
+	@FindBy(id = "form:loginButton")
 	private WebElement loginButton;
 
 	private boolean loggedIn;
 
-	private By usernameLocator = By.id("form:username");
-	private By passwordLocator = By.id("form:password");
-	private By loginButtonLocator = By.id("form:loginButton");
-
 	public LoginView(WebDriver webDriver) throws InterruptedException {
 		super(webDriver);
-		//webDriver.manage().window().maximize();
+
+		webDriver.manage().window().maximize();
+
 		navigateToLogin();
-		
-		password = webDriver.findElement(passwordLocator);
-		username = webDriver.findElement(usernameLocator);
-		
-		loginButton = webDriver.findElement(loginButtonLocator);
 
 	}
 
@@ -43,10 +43,10 @@ public class LoginView extends AbstractView {
 	}
 
 	private void navigateToLogin() {
-		
+
 		webDriver.navigate().to(Constants.LOGIN_URL);
 	}
-	
+
 	public boolean isLoggedIn() {
 		return loggedIn;
 	}

@@ -8,32 +8,52 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
-import selenium.page.AbstractView;
+import selenium.page.BaseView;
+import selenium.page.components.NavigationComponents;
 
-public class ProductView extends AbstractView {
+public class ProductView extends BaseView {
 
+	private NavigationComponents navigationComponents;
+
+	@FindBy(id = "contentForm:addButton")
 	private WebElement addProductButton;
+
+	@FindBy(id = "contentForm:newpwd")
 	private WebElement productName;
+
+	@FindBy(id = "contentForm:desc")
 	private WebElement productDescription;
+
+	@FindBy(id = "contentForm:openDialog")
 	private WebElement openAddProductDialog;
+
+	@FindBy(id = "contentForm:productTable_data")
 	private WebElement dataTable;
+
+	@FindBy(xpath = "//*[@id=\"contentForm:productTable_data\"]/tr[1]/td[1]")
 	private WebElement addedRowOnTable;
+
+	@FindBy(xpath = "//*[@id=\"contentForm:productTable_data\"]/tr[1]/td[1]")
 	private WebElement cellToEdit;
+
+	@FindBy(xpath = "//*[@id=\"contentForm:productTable_data\"]/tr[1]/td[1]")
 	private WebElement cellAfterEdit;
+
+	@FindBy(id = "contentForm:productTable:0:disableProduct")
 	private WebElement disableToggle;
+
+	@FindBy(id = "contentForm:productTable:0:enableProduct")
 	private WebElement enableToggle;
 
-	private By openAddProductDialogLocator = By.id("contentForm:openDialog");
-	private By productNameLocator = By.id("contentForm:newpwd");
-	private By productDescriptionLocator = By.id("contentForm:desc");
-	private By addProductButtonLocator = By.id("contentForm:add");
-	private By dataTableLocator = By.id("contentForm:productTable_data");
-	private By addedRowOnTableLocator = By.xpath("//*[@id=\"contentForm:productTable_data\"]/tr[1]/td[1]");
-	private By cellToEditLocator = By.xpath("//*[@id=\"contentForm:productTable_data\"]/tr[1]/td[1]");
-	private By cellAfterEditLocator = By.xpath("//*[@id=\"contentForm:productTable_data\"]/tr[1]/td[1]");
-	private By disableToggleLocator = By.id("contentForm:productTable:0:disableProduct");
-	private By enableToggleLocator = By.id("contentForm:productTable:0:enableProduct");
+	@FindBy(id = "contentForm")
+	private WebElement contentForm;
+
+	@FindBy(id = "contentForm:disableProduct")
+	private WebElement confirmDisableButton;
 
 	private boolean addedCorrectProduct;
 	private boolean editCorrectProduct;
@@ -41,56 +61,57 @@ public class ProductView extends AbstractView {
 
 	public ProductView(WebDriver webDriver) {
 		super(webDriver);
+		navigationComponents = new NavigationComponents(webDriver);
 
 	}
 
 	public void addProduct() throws InterruptedException {
-		int i = new Random().nextInt(5000) + 5;
-		openAddProductDialog = webDriver.findElement(openAddProductDialogLocator);
+		int randomInt = new Random().nextInt(5000);
+
 		openAddProductDialog.click();
-		Thread.sleep(500);
-		productName = webDriver.findElement(productNameLocator);
-//		String nameToSend = PRODUCT_NAME + i;
-	//	productName.sendKeys(nameToSend);
-		productDescription = webDriver.findElement(productDescriptionLocator);
-	//	productDescription.sendKeys(PRODUCT_DESCRIPTION);
-		addProductButton = webDriver.findElement(addProductButtonLocator);
+		String generatedName = PRODUCT_NAME + randomInt;
+		productName.sendKeys(generatedName);
+		productDescription.sendKeys(PRODUCT_DESCRIPTION);
 		addProductButton.click();
+		// TODO to be changed later
 		Thread.sleep(2000);
-		dataTable = webDriver.findElement(dataTableLocator);
-		addedRowOnTable = dataTable.findElement(addedRowOnTableLocator);
 		String nameOfProductAdded = addedRowOnTable.getText();
-		//addedCorrectProduct = nameToSend.equals(nameOfProductAdded);
+
+		addedCorrectProduct = generatedName.equals(nameOfProductAdded);
 	}
 
 	public void editProduct() throws InterruptedException {
-		int i = new Random().nextInt(5000) + 5;
-		cellToEdit = webDriver.findElement(cellToEditLocator);
+		int randomInt = new Random().nextInt(5000);
+
 		Actions actions = new Actions(webDriver);
 		actions.moveToElement(cellToEdit);
 		actions.click();
-	//	String textToAdd = PRODUCT_NAME + i;
-	//	actions.sendKeys(textToAdd);
+		String textToAdd = PRODUCT_NAME + randomInt;
+		actions.sendKeys(textToAdd);
 		actions.build().perform();
-		webDriver.findElement(By.id("contentForm")).click();
+
+		contentForm.click();
+		// TODO to be changed later
 		Thread.sleep(500);
-		cellAfterEdit = webDriver.findElement(cellAfterEditLocator);
-	//	editCorrectProduct = cellAfterEdit.getText().equals(textToAdd);
+
+		editCorrectProduct = cellAfterEdit.getText().equals(textToAdd);
 	}
 
+	/*
+	 * to be executed after add method
+	 */
 	public void disableProduct() throws InterruptedException {
-		disableToggle = webDriver.findElement(disableToggleLocator);
-		if (disableToggle.isEnabled()) {
-			disableToggle.click();
-			Thread.sleep(1000);
-			webDriver.findElement(By.id("contentForm:disableProduct")).click();
 
-		}
-		Thread.sleep(2000);
-		enableToggle=webDriver.findElement(enableToggleLocator);
-		toggleDisabled=enableToggle.isEnabled();
+		disableToggle.click();
+		// TODO to be changed later
+		Thread.sleep(500);
+		confirmDisableButton.click();
+		Thread.sleep(500);
+		
+		toggleDisabled = isPresentById("contentForm:productTable:0:enableProduct");
 
 	}
+
 
 	public boolean isAddedCorrectProduct() {
 		return addedCorrectProduct;
@@ -114,6 +135,14 @@ public class ProductView extends AbstractView {
 
 	public void setToggleDisabled(boolean toggleDisabled) {
 		this.toggleDisabled = toggleDisabled;
+	}
+
+	public NavigationComponents getNavigationComponents() {
+		return navigationComponents;
+	}
+
+	public void setNavigationComponents(NavigationComponents navigationComponents) {
+		this.navigationComponents = navigationComponents;
 	}
 
 }

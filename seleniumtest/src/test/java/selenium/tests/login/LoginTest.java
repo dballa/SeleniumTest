@@ -4,7 +4,7 @@ import static org.junit.Assert.assertTrue;
 import static selenium.tests.utils.Constants.PWD;
 import static selenium.tests.utils.Constants.USR;
 
-import org.junit.Before;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -17,35 +17,27 @@ import selenium.utils.DriverUtil;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class LoginTest {
 
-	public static WebDriver driver ;
-	
+	public static WebDriver driver;
+
 	public static LoginView loginView;
-	
+
 	@BeforeClass
-	public static void  init() throws InterruptedException {
+	public static void init() throws InterruptedException {
 		driver = DriverUtil.getChromeDriver();
-		loginView= new LoginView(driver);
-		
+		loginView = new LoginView(driver);
+
 	}
-	
-	
+
 	@Test
 	public void loginTest() throws InterruptedException {
-		
+
 		loginView.login(USR, PWD);
 		assertTrue(loginView.isLoggedIn());
 	}
 	
-
-	
-/*	@Test
-	public void test_2() throws InterruptedException {
-		
-		driver.findElement(By.className("icon-settings")).click();
-		
+	@AfterClass
+	public static void close() {
+		driver.quit();
 	}
-	
-	@Test
-	public void test_3() throws InterruptedException {}
-*/
+
 }

@@ -5,7 +5,7 @@ public class Constants {
 	public static String USR 			= "admin";
 	public static String INVALID_USR	= "adm";
 	public static String PWD 			= "Admin123+";
-	public static String LOGIN_URL 		= "http://localhost:8081/alpet-fe/login.xhtml";
+	public static String LOGIN_URL 		= "http://localhost:8080/alpet-fe/login.xhtml";
 	public static String DASHBOARD		= "dashboard.xhtml";
 
 	public static String NAME 			= "John";
@@ -15,5 +15,10 @@ public class Constants {
 	public static String PASSWORD		= "Admin123+";
 	
 	public static String TEST			= "test";
-	public static String INVALID_EMAIL	= "Email nuk është i saktë!";
+	public static String INVALID_EMAIL_AL	= "Email nuk është i saktë!";
+	public static String INVALID_EMAIL_EN	= "Email is not valid!";
+	
+	public static String PRODUCT_VIEW   = "productView.xhtml";
+	public static String PRODUCT_DESCRIPTION="Test";
+	public static String PRODUCT_NAME="Test";
 }
