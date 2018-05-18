@@ -20,5 +20,9 @@ public class Constants {
 	
 	public static String PRODUCT_VIEW   = "productView.xhtml";
 	public static String PRODUCT_DESCRIPTION="Test";
-	public static String PRODUCT_NAME="Test";
+	public static String PRODUCT_NAME	="Test";
+	public static String LOGIN			="login.xhtml";
+	public static String ENGLISH_TEXT	="Sales point:";
+	public static String ALBANIAN_TEXT	="Pika e shitjes:";
+	public static String USER_PROFILE	="viewUserData.xhtml";
 }

@@ -74,7 +74,7 @@ public class ProductView extends BaseView {
 		productDescription.sendKeys(PRODUCT_DESCRIPTION);
 		addProductButton.click();
 		// TODO to be changed later
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		String nameOfProductAdded = addedRowOnTable.getText();
 
 		addedCorrectProduct = generatedName.equals(nameOfProductAdded);
@@ -101,11 +101,12 @@ public class ProductView extends BaseView {
 	 * to be executed after add method
 	 */
 	public void disableProduct() throws InterruptedException {
-
+	
 		disableToggle.click();
 		// TODO to be changed later
 		Thread.sleep(500);
 		confirmDisableButton.click();
+		// TODO to be changed later
 		Thread.sleep(500);
 		
 		toggleDisabled = isPresentById("contentForm:productTable:0:enableProduct");
