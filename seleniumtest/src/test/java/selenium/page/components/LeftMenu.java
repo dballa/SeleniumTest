@@ -13,12 +13,17 @@ public class LeftMenu extends BaseView {
 	private WebElement userAdministrationButton;
 	private WebElement administratorSubMenu;
 	private WebElement productMenuItem;
+	private WebElement dailySalesMenu;
+	private WebElement registerSalesMenu;
+	
 
 	private By menuButtonLocator;
 	private By administratorSubMenuLocator;
 	private By productMenuItemLocator;
 	private By usersRolesButtonLocator;
 	private By userAdministrationButtonLocator;
+	private By dailySalesMenuLocator;
+	private By registerSalesMenuLocator;
 
 	public LeftMenu(WebDriver webDriver) {
 		super(webDriver);
@@ -31,6 +36,8 @@ public class LeftMenu extends BaseView {
 		menuButtonLocator = By.id("menu-button");
 		usersRolesButtonLocator = By.id("users_roles");
 		userAdministrationButtonLocator = By.id("user_administration");
+		dailySalesMenuLocator = By.id("daily_sales");
+		registerSalesMenuLocator = By.id("newShiftHistoryWorker");
 		administratorSubMenuLocator = By.id("adminSubmenu");
 		productMenuItemLocator = By.xpath("//*[@id=\"Product_administration\"]/a");
 	}
@@ -63,6 +70,17 @@ public class LeftMenu extends BaseView {
 		productMenuItem = webDriver.findElement(productMenuItemLocator);
 		productMenuItem.click();
 
+	}
+	
+	
+	public void navigateToPointOfSales() throws InterruptedException {
+		menuButton.click();
+		Thread.sleep(1000);
+		dailySalesMenu = webDriver.findElement(dailySalesMenuLocator);
+		dailySalesMenu.click();
+		Thread.sleep(1000);
+		registerSalesMenu = webDriver.findElement(registerSalesMenuLocator);
+		registerSalesMenu.click();
 	}
 
 }
